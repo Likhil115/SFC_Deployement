@@ -1,0 +1,6402 @@
+[
+  {
+    "request_id": 244,
+    "expected_latency": 33.000000,
+    "ttl": 119,
+    "arrival_rate": 37.361669,
+    "vnfs": [
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": ["TrafficAnalyzer"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 5,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": ["TrafficAnalyzer", "Encryptor"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Encryptor", "Logger"]
+      }
+    ]
+  },
+  {
+    "request_id": 766,
+    "expected_latency": 39.000000,
+    "ttl": 121,
+    "arrival_rate": 38.652971,
+    "vnfs": [
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["DPI", "SecurityMonitor"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 530,
+    "expected_latency": 8.000000,
+    "ttl": 111,
+    "arrival_rate": 13.585268,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["Decryptor", "Decryptor"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["ThreatDetector", "Logger"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["IPS", "IPS"]
+      }
+    ]
+  },
+  {
+    "request_id": 824,
+    "expected_latency": 20.000000,
+    "ttl": 57,
+    "arrival_rate": 20.792700,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["Decompressor", "Decompressor"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["Compressor", "Firewall"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 584,
+    "expected_latency": 17.000000,
+    "ttl": 151,
+    "arrival_rate": 41.066105,
+    "vnfs": [
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["IDS", "IDS"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": ["MalwareDetector"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["MalwareDetector", "MalwareDetector"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 42,
+    "expected_latency": 47.000000,
+    "ttl": 35,
+    "arrival_rate": 40.641371,
+    "vnfs": [
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["MalwareDetector", "RateLimiter"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 150,
+    "expected_latency": 14.000000,
+    "ttl": 231,
+    "arrival_rate": 30.150451,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter", "RateLimiter"]
+      }
+    ]
+  },
+  {
+    "request_id": 356,
+    "expected_latency": 38.000000,
+    "ttl": 297,
+    "arrival_rate": 22.112619,
+    "vnfs": [
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["SecurityMonitor"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 729,
+    "expected_latency": 3.000000,
+    "ttl": 277,
+    "arrival_rate": 14.197743,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["SecurityMonitor"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 278,
+    "expected_latency": 22.000000,
+    "ttl": 82,
+    "arrival_rate": 33.640679,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["LoadBalancer", "LoadBalancer"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": ["SecurityMonitor"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 405,
+    "expected_latency": 26.000000,
+    "ttl": 174,
+    "arrival_rate": 6.534312,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["AnomalyDetector"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["Decryptor", "Decryptor"]
+      }
+    ]
+  },
+  {
+    "request_id": 938,
+    "expected_latency": 13.000000,
+    "ttl": 239,
+    "arrival_rate": 33.720261,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter", "RateLimiter"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["Encryptor"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 796,
+    "expected_latency": 10.000000,
+    "ttl": 219,
+    "arrival_rate": 40.118403,
+    "vnfs": [
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 801,
+    "expected_latency": 17.000000,
+    "ttl": 254,
+    "arrival_rate": 9.095022,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["AnomalyDetector"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["IPS", "RateLimiter"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 698,
+    "expected_latency": 23.000000,
+    "ttl": 184,
+    "arrival_rate": 20.143442,
+    "vnfs": [
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["DPI"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Compressor"]
+      }
+    ]
+  },
+  {
+    "request_id": 435,
+    "expected_latency": 8.000000,
+    "ttl": 95,
+    "arrival_rate": 15.357233,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["Decryptor", "LoadBalancer"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": ["Shaper"]
+      }
+    ]
+  },
+  {
+    "request_id": 788,
+    "expected_latency": 37.000000,
+    "ttl": 163,
+    "arrival_rate": 35.804293,
+    "vnfs": [
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["IPS", "DPI"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["DPI"]
+      }
+    ]
+  },
+  {
+    "request_id": 779,
+    "expected_latency": 35.000000,
+    "ttl": 54,
+    "arrival_rate": 49.721913,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": ["TrafficAnalyzer"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["QoSManager", "QoSManager"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": ["Encryptor", "Decompressor"]
+      }
+    ]
+  },
+  {
+    "request_id": 57,
+    "expected_latency": 31.000000,
+    "ttl": 164,
+    "arrival_rate": 23.042306,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["Encryptor", "ThreatDetector"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["ThreatDetector", "Shaper"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 885,
+    "expected_latency": 17.000000,
+    "ttl": 186,
+    "arrival_rate": 24.987053,
+    "vnfs": [
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["SecurityMonitor"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": ["TrafficAnalyzer", "SecurityMonitor"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["QoSManager", "QoSManager"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["IPS", "IPS"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["SecurityMonitor", "QoSManager"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 972,
+    "expected_latency": 40.000000,
+    "ttl": 160,
+    "arrival_rate": 32.932149,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 1024,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 887,
+    "expected_latency": 15.000000,
+    "ttl": 176,
+    "arrival_rate": 47.262573,
+    "vnfs": [
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["LoadBalancer", "DPI"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["DPI", "DPI"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": ["DPI", "RateLimiter"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 18,
+    "expected_latency": 41.000000,
+    "ttl": 237,
+    "arrival_rate": 29.204203,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["IPS"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 609,
+    "expected_latency": 19.000000,
+    "ttl": 237,
+    "arrival_rate": 28.531166,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["Firewall"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["Logger", "RateLimiter"]
+      }
+    ]
+  },
+  {
+    "request_id": 845,
+    "expected_latency": 24.000000,
+    "ttl": 146,
+    "arrival_rate": 9.352423,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["IDS"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["Compressor", "Shaper"]
+      }
+    ]
+  },
+  {
+    "request_id": 926,
+    "expected_latency": 38.000000,
+    "ttl": 240,
+    "arrival_rate": 8.011345,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["AnomalyDetector", "AnomalyDetector"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 881,
+    "expected_latency": 23.000000,
+    "ttl": 271,
+    "arrival_rate": 39.369410,
+    "vnfs": [
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["IPS", "IPS"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": ["MalwareDetector"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["Shaper", "IPS"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 168,
+    "expected_latency": 20.000000,
+    "ttl": 297,
+    "arrival_rate": 27.900242,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 440,
+    "expected_latency": 21.000000,
+    "ttl": 249,
+    "arrival_rate": 14.595132,
+    "vnfs": [
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": ["IPS"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["IDS"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["IPS"]
+      }
+    ]
+  },
+  {
+    "request_id": 743,
+    "expected_latency": 6.000000,
+    "ttl": 183,
+    "arrival_rate": 32.696880,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["IPS"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 1024,
+        "depends_on": ["TrafficAnalyzer"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["Encryptor"]
+      }
+    ]
+  },
+  {
+    "request_id": 687,
+    "expected_latency": 42.000000,
+    "ttl": 282,
+    "arrival_rate": 34.488170,
+    "vnfs": [
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["TrafficAnalyzer"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": ["MalwareDetector"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": ["MalwareDetector"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["IPS", "TrafficAnalyzer"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["MalwareDetector", "NAT"]
+      }
+    ]
+  },
+  {
+    "request_id": 577,
+    "expected_latency": 37.000000,
+    "ttl": 66,
+    "arrival_rate": 30.335688,
+    "vnfs": [
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": ["Encryptor", "Encryptor"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Encryptor", "Decryptor"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": ["MalwareDetector", "Encryptor"]
+      }
+    ]
+  },
+  {
+    "request_id": 89,
+    "expected_latency": 39.000000,
+    "ttl": 195,
+    "arrival_rate": 41.514551,
+    "vnfs": [
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["IPS"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": ["Decryptor", "IPS"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": ["TrafficAnalyzer", "NAT"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": ["AccessController"]
+      }
+    ]
+  },
+  {
+    "request_id": 243,
+    "expected_latency": 20.000000,
+    "ttl": 182,
+    "arrival_rate": 33.305935,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Logger", "MalwareDetector"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Decompressor", "TrafficAnalyzer"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 183,
+    "expected_latency": 5.000000,
+    "ttl": 260,
+    "arrival_rate": 26.163518,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["ThreatDetector", "ThreatDetector"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": ["NAT", "SecurityMonitor"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["NAT"]
+      }
+    ]
+  },
+  {
+    "request_id": 478,
+    "expected_latency": 49.000000,
+    "ttl": 64,
+    "arrival_rate": 27.875735,
+    "vnfs": [
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["AccessController"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["MalwareDetector", "Logger"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 175,
+    "expected_latency": 12.000000,
+    "ttl": 38,
+    "arrival_rate": 8.165241,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 2.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 846,
+    "expected_latency": 2.000000,
+    "ttl": 90,
+    "arrival_rate": 42.020181,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": ["Decompressor", "Logger"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["MalwareDetector"]
+      }
+    ]
+  },
+  {
+    "request_id": 924,
+    "expected_latency": 40.000000,
+    "ttl": 73,
+    "arrival_rate": 40.988585,
+    "vnfs": [
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 272,
+    "expected_latency": 39.000000,
+    "ttl": 91,
+    "arrival_rate": 30.899712,
+    "vnfs": [
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": ["DPI", "IPS"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["Compressor", "Shaper"]
+      }
+    ]
+  },
+  {
+    "request_id": 594,
+    "expected_latency": 1.000000,
+    "ttl": 98,
+    "arrival_rate": 46.220234,
+    "vnfs": [
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["MalwareDetector", "AccessController"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 623,
+    "expected_latency": 31.000000,
+    "ttl": 201,
+    "arrival_rate": 12.223085,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["RateLimiter", "RateLimiter"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["AnomalyDetector", "RateLimiter"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 665,
+    "expected_latency": 28.000000,
+    "ttl": 159,
+    "arrival_rate": 33.893952,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["Decompressor"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["Decompressor"]
+      }
+    ]
+  },
+  {
+    "request_id": 792,
+    "expected_latency": 27.000000,
+    "ttl": 206,
+    "arrival_rate": 23.671600,
+    "vnfs": [
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 216,
+    "expected_latency": 6.000000,
+    "ttl": 210,
+    "arrival_rate": 15.097733,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["Compressor", "Compressor"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 682,
+    "expected_latency": 25.000000,
+    "ttl": 273,
+    "arrival_rate": 8.398854,
+    "vnfs": [
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": ["Shaper", "QoSManager"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": ["NAT", "RateLimiter"]
+      }
+    ]
+  },
+  {
+    "request_id": 711,
+    "expected_latency": 32.000000,
+    "ttl": 142,
+    "arrival_rate": 30.450758,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Decryptor", "Encryptor"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 403,
+    "expected_latency": 9.000000,
+    "ttl": 65,
+    "arrival_rate": 26.723653,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["RateLimiter", "RateLimiter"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 653,
+    "expected_latency": 30.000000,
+    "ttl": 49,
+    "arrival_rate": 5.208706,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["ThreatDetector", "Decryptor"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["AccessController"]
+      }
+    ]
+  },
+  {
+    "request_id": 783,
+    "expected_latency": 21.000000,
+    "ttl": 293,
+    "arrival_rate": 49.794915,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 768,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["Decryptor", "Decryptor"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["Decryptor"]
+      }
+    ]
+  },
+  {
+    "request_id": 781,
+    "expected_latency": 19.000000,
+    "ttl": 205,
+    "arrival_rate": 15.857978,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 119,
+    "expected_latency": 26.000000,
+    "ttl": 200,
+    "arrival_rate": 10.135834,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["NAT", "NAT"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["MalwareDetector", "Encryptor"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 862,
+    "expected_latency": 28.000000,
+    "ttl": 102,
+    "arrival_rate": 45.172261,
+    "vnfs": [
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.400000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": ["AccessController"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 886,
+    "expected_latency": 3.000000,
+    "ttl": 36,
+    "arrival_rate": 26.749755,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": ["AnomalyDetector"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": ["Shaper", "AnomalyDetector"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 205,
+    "expected_latency": 18.000000,
+    "ttl": 289,
+    "arrival_rate": 11.339733,
+    "vnfs": [
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["QoSManager", "QoSManager"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 670,
+    "expected_latency": 6.000000,
+    "ttl": 282,
+    "arrival_rate": 37.736463,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["QoSManager", "QoSManager"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 173,
+    "expected_latency": 18.000000,
+    "ttl": 56,
+    "arrival_rate": 17.274307,
+    "vnfs": [
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["Decompressor"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["NAT", "Decompressor"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["Decompressor", "Decryptor"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": ["Decryptor", "ThreatDetector"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["Decryptor", "ThreatDetector"]
+      }
+    ]
+  },
+  {
+    "request_id": 80,
+    "expected_latency": 35.000000,
+    "ttl": 166,
+    "arrival_rate": 48.472255,
+    "vnfs": [
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["TrafficAnalyzer", "IPS"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": ["IDS", "IDS"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": ["IDS", "IDS"]
+      }
+    ]
+  },
+  {
+    "request_id": 189,
+    "expected_latency": 46.000000,
+    "ttl": 235,
+    "arrival_rate": 43.381402,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["Decryptor", "DPI"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["AccessController", "DPI"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["ThreatDetector"]
+      }
+    ]
+  },
+  {
+    "request_id": 493,
+    "expected_latency": 49.000000,
+    "ttl": 275,
+    "arrival_rate": 38.645085,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 36,
+    "expected_latency": 47.000000,
+    "ttl": 249,
+    "arrival_rate": 31.361134,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["ThreatDetector", "ThreatDetector"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 307,
+    "expected_latency": 34.000000,
+    "ttl": 198,
+    "arrival_rate": 15.561847,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": ["AnomalyDetector", "MalwareDetector"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 768,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": ["Shaper", "Decompressor"]
+      }
+    ]
+  },
+  {
+    "request_id": 814,
+    "expected_latency": 40.000000,
+    "ttl": 112,
+    "arrival_rate": 23.025659,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 168,
+    "expected_latency": 16.000000,
+    "ttl": 192,
+    "arrival_rate": 32.171999,
+    "vnfs": [
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 1024,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 543,
+    "expected_latency": 27.000000,
+    "ttl": 223,
+    "arrival_rate": 24.902370,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": ["Firewall", "Firewall"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["IDS", "Firewall"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 589,
+    "expected_latency": 13.000000,
+    "ttl": 254,
+    "arrival_rate": 31.901611,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["LoadBalancer"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": ["LoadBalancer"]
+      }
+    ]
+  },
+  {
+    "request_id": 137,
+    "expected_latency": 24.000000,
+    "ttl": 281,
+    "arrival_rate": 15.566563,
+    "vnfs": [
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["IDS", "IDS"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": ["IDS"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 712,
+    "expected_latency": 22.000000,
+    "ttl": 60,
+    "arrival_rate": 5.309711,
+    "vnfs": [
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 1024,
+        "depends_on": ["SecurityMonitor"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["SecurityMonitor", "SecurityMonitor"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": ["MalwareDetector", "MalwareDetector"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["Encryptor", "Encryptor"]
+      }
+    ]
+  },
+  {
+    "request_id": 326,
+    "expected_latency": 36.000000,
+    "ttl": 39,
+    "arrival_rate": 36.262496,
+    "vnfs": [
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["AccessController", "QoSManager"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 447,
+    "expected_latency": 16.000000,
+    "ttl": 97,
+    "arrival_rate": 13.978007,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["Firewall", "Firewall"]
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Firewall", "Firewall"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 714,
+    "expected_latency": 34.000000,
+    "ttl": 46,
+    "arrival_rate": 9.471622,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 956,
+    "expected_latency": 48.000000,
+    "ttl": 159,
+    "arrival_rate": 8.593350,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Compressor", "QoSManager"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["QoSManager", "Compressor"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 197,
+    "expected_latency": 18.000000,
+    "ttl": 191,
+    "arrival_rate": 38.614747,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["Decryptor"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Encryptor"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 396,
+    "expected_latency": 24.000000,
+    "ttl": 178,
+    "arrival_rate": 25.486926,
+    "vnfs": [
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["Encryptor", "DPI"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": ["Encryptor"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": ["DPI"]
+      }
+    ]
+  },
+  {
+    "request_id": 34,
+    "expected_latency": 15.000000,
+    "ttl": 57,
+    "arrival_rate": 36.826350,
+    "vnfs": [
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": ["AccessController"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["Encryptor", "Encryptor"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 812,
+    "expected_latency": 40.000000,
+    "ttl": 228,
+    "arrival_rate": 17.598160,
+    "vnfs": [
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["AccessController", "LoadBalancer"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": ["AccessController", "LoadBalancer"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 156,
+    "expected_latency": 31.000000,
+    "ttl": 150,
+    "arrival_rate": 13.076099,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["Encryptor"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": ["LoadBalancer"]
+      }
+    ]
+  },
+  {
+    "request_id": 918,
+    "expected_latency": 8.000000,
+    "ttl": 101,
+    "arrival_rate": 35.400161,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Firewall", "SecurityMonitor"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 834,
+    "expected_latency": 47.000000,
+    "ttl": 96,
+    "arrival_rate": 31.027167,
+    "vnfs": [
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": ["AccessController", "Decompressor"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["AccessController"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": ["Logger"]
+      }
+    ]
+  },
+  {
+    "request_id": 776,
+    "expected_latency": 45.000000,
+    "ttl": 209,
+    "arrival_rate": 34.415887,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["Logger", "Decompressor"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["DPI"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["Decompressor", "Encryptor"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 285,
+    "expected_latency": 11.000000,
+    "ttl": 299,
+    "arrival_rate": 22.377348,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 128,
+        "depends_on": ["Compressor", "QoSManager"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": ["Logger", "QoSManager"]
+      }
+    ]
+  },
+  {
+    "request_id": 157,
+    "expected_latency": 28.000000,
+    "ttl": 35,
+    "arrival_rate": 38.485757,
+    "vnfs": [
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["MalwareDetector", "TrafficAnalyzer"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": ["TrafficAnalyzer", "TrafficAnalyzer"]
+      }
+    ]
+  },
+  {
+    "request_id": 227,
+    "expected_latency": 46.000000,
+    "ttl": 40,
+    "arrival_rate": 26.879587,
+    "vnfs": [
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["AccessController", "SecurityMonitor"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["SecurityMonitor", "Decompressor"]
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["DPI", "AccessController"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["NAT", "SecurityMonitor"]
+      }
+    ]
+  },
+  {
+    "request_id": 146,
+    "expected_latency": 24.000000,
+    "ttl": 287,
+    "arrival_rate": 42.563216,
+    "vnfs": [
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 5,
+        "memory_requirement": 640,
+        "depends_on": ["MalwareDetector", "AnomalyDetector"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": ["Shaper", "Shaper"]
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 239,
+    "expected_latency": 36.000000,
+    "ttl": 298,
+    "arrival_rate": 28.574973,
+    "vnfs": [
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 3.100000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "AccessController",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["AnomalyDetector"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": ["DPI", "RateLimiter"]
+      }
+    ]
+  },
+  {
+    "request_id": 909,
+    "expected_latency": 38.000000,
+    "ttl": 31,
+    "arrival_rate": 14.480509,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 4.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": ["MalwareDetector", "Firewall"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 4,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 357,
+    "expected_latency": 35.000000,
+    "ttl": 66,
+    "arrival_rate": 6.261667,
+    "vnfs": [
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": ["IPS", "LoadBalancer"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 384,
+        "depends_on": ["IPS"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["LoadBalancer", "LoadBalancer"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 755,
+    "expected_latency": 4.000000,
+    "ttl": 113,
+    "arrival_rate": 29.158434,
+    "vnfs": [
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.600000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": ["Decompressor", "RateLimiter"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["Decompressor"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 767,
+    "expected_latency": 1.000000,
+    "ttl": 72,
+    "arrival_rate": 49.822885,
+    "vnfs": [
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 640,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["MalwareDetector", "MalwareDetector"]
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 512,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 352,
+    "expected_latency": 7.000000,
+    "ttl": 101,
+    "arrival_rate": 11.859772,
+    "vnfs": [
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": ["MalwareDetector", "Logger"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 512,
+        "depends_on": ["Shaper"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 220,
+    "expected_latency": 35.000000,
+    "ttl": 89,
+    "arrival_rate": 39.682517,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 4.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 1024,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 3,
+        "memory_requirement": 128,
+        "depends_on": ["Compressor"]
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["Logger"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 896,
+        "depends_on": ["Logger", "Logger"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 852,
+    "expected_latency": 35.000000,
+    "ttl": 194,
+    "arrival_rate": 29.303795,
+    "vnfs": [
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 3.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": ["TrafficAnalyzer", "Compressor"]
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 5,
+        "memory_requirement": 768,
+        "depends_on": ["TrafficAnalyzer"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 640,
+        "depends_on": ["Firewall", "TrafficAnalyzer"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 3.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 1024,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 472,
+    "expected_latency": 31.000000,
+    "ttl": 102,
+    "arrival_rate": 28.758288,
+    "vnfs": [
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 0.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.900000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": ["AnomalyDetector"]
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 640,
+        "depends_on": ["QoSManager"]
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 1024,
+        "depends_on": ["Compressor", "IDS"]
+      }
+    ]
+  },
+  {
+    "request_id": 426,
+    "expected_latency": 48.000000,
+    "ttl": 47,
+    "arrival_rate": 24.733459,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "IDS",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter", "IPS"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.100000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 885,
+    "expected_latency": 50.000000,
+    "ttl": 172,
+    "arrival_rate": 35.491658,
+    "vnfs": [
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 0.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": ["Firewall"]
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 1.100000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["Firewall", "RateLimiter"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 2.700000,
+        "cpu_requirement": 3,
+        "memory_requirement": 1024,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 2,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.300000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 294,
+    "expected_latency": 46.000000,
+    "ttl": 159,
+    "arrival_rate": 40.486350,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 2.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 2.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": ["Encryptor", "RateLimiter"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "Compressor",
+        "type": "shaper",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["TrafficAnalyzer", "Encryptor"]
+      },
+      {
+        "name": "Shaper",
+        "type": "shaper",
+        "processing_latency": 2.900000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "SecurityMonitor",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 440,
+    "expected_latency": 16.000000,
+    "ttl": 171,
+    "arrival_rate": 12.219576,
+    "vnfs": [
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 1,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 3,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 4,
+        "memory_requirement": 384,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": ["NAT"]
+      },
+      {
+        "name": "Decryptor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 1,
+        "memory_requirement": 1024,
+        "depends_on": ["Decompressor"]
+      }
+    ]
+  },
+  {
+    "request_id": 36,
+    "expected_latency": 16.000000,
+    "ttl": 229,
+    "arrival_rate": 16.618683,
+    "vnfs": [
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "IPS",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 192,
+        "depends_on": ["MalwareDetector"]
+      },
+      {
+        "name": "Decompressor",
+        "type": "shaper",
+        "processing_latency": 4.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 0.500000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "AnomalyDetector",
+        "type": "monitor",
+        "processing_latency": 1.800000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": ["Decompressor"]
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.600000,
+        "cpu_requirement": 1,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 3.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 256,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 962,
+    "expected_latency": 38.000000,
+    "ttl": 155,
+    "arrival_rate": 5.148159,
+    "vnfs": [
+      {
+        "name": "ThreatDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 2,
+        "memory_requirement": 128,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 2,
+        "memory_requirement": 256,
+        "depends_on": ["ThreatDetector"]
+      },
+      {
+        "name": "NAT",
+        "type": "shaper",
+        "processing_latency": 2.500000,
+        "cpu_requirement": 1,
+        "memory_requirement": 1024,
+        "depends_on": []
+      },
+      {
+        "name": "DPI",
+        "type": "shaper",
+        "processing_latency": 4.500000,
+        "cpu_requirement": 3,
+        "memory_requirement": 768,
+        "depends_on": []
+      },
+      {
+        "name": "Firewall",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 1,
+        "memory_requirement": 64,
+        "depends_on": []
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.500000,
+        "cpu_requirement": 5,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 1.700000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      }
+    ]
+  },
+  {
+    "request_id": 666,
+    "expected_latency": 28.000000,
+    "ttl": 129,
+    "arrival_rate": 39.401117,
+    "vnfs": [
+      {
+        "name": "RateLimiter",
+        "type": "shaper",
+        "processing_latency": 1.600000,
+        "cpu_requirement": 2,
+        "memory_requirement": 896,
+        "depends_on": []
+      },
+      {
+        "name": "Logger",
+        "type": "monitor",
+        "processing_latency": 1.200000,
+        "cpu_requirement": 3,
+        "memory_requirement": 64,
+        "depends_on": ["RateLimiter"]
+      },
+      {
+        "name": "MalwareDetector",
+        "type": "monitor",
+        "processing_latency": 1.300000,
+        "cpu_requirement": 3,
+        "memory_requirement": 192,
+        "depends_on": ["Logger", "RateLimiter"]
+      },
+      {
+        "name": "QoSManager",
+        "type": "shaper",
+        "processing_latency": 1.400000,
+        "cpu_requirement": 2,
+        "memory_requirement": 512,
+        "depends_on": []
+      },
+      {
+        "name": "LoadBalancer",
+        "type": "shaper",
+        "processing_latency": 4.200000,
+        "cpu_requirement": 5,
+        "memory_requirement": 384,
+        "depends_on": []
+      },
+      {
+        "name": "TrafficAnalyzer",
+        "type": "monitor",
+        "processing_latency": 1.000000,
+        "cpu_requirement": 1,
+        "memory_requirement": 192,
+        "depends_on": []
+      },
+      {
+        "name": "Encryptor",
+        "type": "shaper",
+        "processing_latency": 4.000000,
+        "cpu_requirement": 4,
+        "memory_requirement": 128,
+        "depends_on": ["LoadBalancer"]
+      }
+    ]
+  }
+]
